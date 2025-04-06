@@ -1,0 +1,371 @@
+/* Signup container styles */
+.SignupUser {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 6px 6px 54px 0px rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  margin: 30px;
+}
+
+/* Form group styles */
+.SignupUserForm .inputGroup {
+  width: 100%;
+}
+
+.SignupUserForm .inputGroup label {
+  /* margin-top: 10px; */
+  font-weight: 500;
+}
+
+.inputStyle {
+  padding: 6px 12px;
+  outline: none;
+  box-shadow: none;
+}
+
+.SignupUserForm .inputGroup input[type="text"],
+.SignupUserForm .inputGroup input[type="email"],
+.SignupUserForm .inputGroup input[type="password"],
+.react-tel-input .formControl {
+  /* margin-top: 5px; */
+  /* padding: 10px; */
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  height: 45px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.inputGroup input[type="text"]:focus,
+.inputGroup input[type="email"]:focus,
+.inputGroup input[type="password"]:focus {
+  box-shadow: none;
+}
+
+.react-tel-input .flag-dropdown {
+  border: 1px solid #ced4da;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  background: white;
+  padding: 0;
+  height: 100%;
+  border: none;
+  margin-left: 5px;
+}
+
+.phoneInputStyle {
+  padding-left: "50px";
+  border: "none";
+  border-radius: "4px";
+  font-size: "1rem";
+  width: "100%";
+  height: "45px";
+  box-sizing: "border-box";
+}
+
+.phoneContainerStyle {
+  margin-top: "3px";
+  border: "none";
+  outline: "none";
+}
+
+/* Button styles */
+.inputGroup button {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.inputGroup .btn-success {
+  background-color: #bb1314;
+  color: #fff;
+}
+
+.inputGroup .btn-success:hover {
+  background-color: #a10e10;
+}
+
+.inputGroup .btn-secondary {
+  background-color: #f7f7f8;
+  color: black;
+}
+
+.inputGroup .btn-secondary:hover {
+  background-color: #e6e6e7;
+}
+
+/* Horizontal line with text */
+.SignupUserForm .inputGroup .textLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.SignupUserForm .inputGroup .textLine:before,
+.SignupUserForm .inputGroup .textLine:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid #ccc;
+  margin: auto;
+}
+
+.SignupUserForm .inputGroup .textLine:before {
+  margin-right: 10px;
+}
+
+.SignupUserForm .inputGroup .textLine:after {
+  margin-left: 10px;
+}
+
+/* Login text and link */
+div.login {
+  text-align: center;
+  margin-top: 10px;
+}
+
+span.loginLink {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #007bff;
+}
+
+span.loginLink:hover {
+  text-decoration: none;
+}
+
+/* Google logo styling */
+img.glogo {
+  height: 100%;
+  max-height: 1.5em;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Description paragraph */
+p.desc {
+  text-align: center;
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+/* Login text and Link (React Router) */
+.login {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.loginLink,
+.Link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.loginLink:hover,
+.Link:hover {
+  text-decoration: none;
+}
+
+/* Description paragraph */
+p.desc {
+  text-align: center;
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  p.desc {
+    font-size: 0.9rem;
+  }
+
+  .SignupUser {
+    padding: 15px;
+  }
+}
+
+/* Fieldset styling */
+.fieldsetStyle {
+  border: 1px solid #ced4da;
+  border-radius: 15px;
+  padding: 5px;
+  margin-top: 25px;
+  position: relative;
+}
+
+.legendStyle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #495057;
+  padding: 0 10px;
+  margin-bottom: 0;
+  width: auto;
+  background: white;
+  position: absolute;
+  top: -14px;
+  left: 10px;
+  z-index: 1;
+}
+
+.otpInput {
+  box-shadow: none !important;
+  outline: none !important;
+  transition: border-color 0.3s ease !important;
+}
+
+.otpBox {
+  width: calc(
+    14% - 8px
+  ) !important; /* Dynamically adjust width based on container size */
+  height: 50px !important;
+  text-align: center !important;
+  border-radius: 8px !important;
+  border: 1px solid #ced4da !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  flex-shrink: 0 !important;
+}
+
+.otpInput:focus {
+  border-color: #bb1314 !important;
+}
+
+:global(.react-tel-input) {
+  width: 100% !important;
+}
+
+:global(.react-tel-input .formControl) {
+  border: 1px solid #ced4da !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  height: 45px !important;
+  box-sizing: border-box !important;
+}
+
+:global(.react-tel-input .flag-dropdown) {
+  background: white !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+:global(.react-tel-input .selected-flag:focus),
+:global(.react-tel-input .flag-dropdown:focus),
+:global(.react-tel-input .form-control:focus) {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Adjustments for screens less than 375px */
+@media (max-width: 380px) {
+  .SignupUser {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 8px;
+  }
+
+  p.desc {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+
+  .SignupUserForm .inputGroup input,
+  .react-tel-input .formControl {
+    font-size: 0.9rem;
+    height: 40px;
+  }
+
+  .SignupUserForm .inputGroup button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .textLine {
+    margin: 10px 0;
+  }
+
+  .loginLink,
+  .Link {
+    font-size: 0.85rem;
+  }
+
+  fieldset {
+    padding: 5px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
+  legend {
+    font-size: 14px;
+  }
+
+  .passwordContainer i {
+    right: 8px;
+  }
+
+  /* .formCheck {
+    display: flex;
+    align-items: center;
+    padding-left: "5px";
+  } */
+
+  /* Adjustments for "Remember Me" and "Forgot Password" */
+  .formCheckInput {
+    margin: "0 8px 0 0";
+    width: "18px";
+    height: "18px";
+    cursor: "pointer";
+  }
+
+  .formCheckLabel {
+    font-size: 0.8rem;
+    margin: 0 6px 0 0;
+  }
+
+  a,
+  .Link {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Allow login text to overflow on small screens */
+  .login {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 393px) {
+  .formCheckInput {
+    width: 10px;
+    height: 10px;
+  }
+
+  .formCheckLabel {
+    font-size: 0.8rem;
+    margin: 0 6px 0 0;
+  }
+
+  a,
+  .Link {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}

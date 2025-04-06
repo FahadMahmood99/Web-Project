@@ -1,0 +1,114 @@
+.booksSection {
+  position: relative;
+  padding: 20px 40px;
+  max-width: 100%;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.recommended {
+  font-weight: bold;
+  color: red;
+}
+
+.forYou {
+  font-style: italic;
+}
+
+.booksWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.booksWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b03030;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.scrollButton:first-of-type {
+  left: 3px;
+  margin: 0px 5px;
+}
+
+.scrollButton:last-of-type {
+  right: 3px;
+  margin: 0px 5px;
+}
+
+.scrollButton:hover {
+  background-color: #901c1c;
+}
+
+.scrollButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.categoryButton {
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 5px; /* Add slight margin to prevent buttons from touching */
+}
+
+@media (max-width: 1024px) {
+  .scrollButton {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollButton {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrollButton {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}

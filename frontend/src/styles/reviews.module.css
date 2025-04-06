@@ -1,0 +1,167 @@
+/* Main Container */
+.reviewsContainer {
+  background: #fcf9f5;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Heading */
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.redText {
+  color: red;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 14px;
+}
+
+/* Average Rating Box */
+.ratingBox {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* Even spacing between elements */
+  align-items: center; /* Align items vertically */
+  gap: 10px;
+}
+
+.stars {
+  color: #ff9800;
+  margin-left: 10px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ff9800;
+}
+
+.halfStar {
+  font-size: 20px;
+  color: #ddd;
+}
+
+.ratingText {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+/* Add Review Link */
+.addReview {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 0;
+}
+
+/* Review Item */
+.reviewItem {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+/* User Profile Pic */
+.profilePic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Review Header */
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewStars {
+  color: #ff9800;
+}
+
+/* Review Text */
+.reviewText {
+  font-size: 14px;
+  color: #444;
+  margin-top: 5px;
+}
+
+/* Meta Info (Likes & Time) */
+.reviewMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: red;
+}
+
+.timeAgo {
+  font-size: 12px;
+}
+
+/* Load More Button */
+.loadMore {
+  background: red;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .addReview {
+    padding-right: 15px;
+    padding-top: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .stars {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+  }
+  .ratingText {
+    text-align: right;
+    margin: 0;
+    font-size: 13px;
+  }
+  strong {
+    font-size: 12px;
+  }
+  .reviewText {
+    font-size: 12px;
+  }
+  .reviewMeta {
+    font-size: 12px;
+  }
+  .profilePic {
+    margin-right: 10px;
+  }
+  .addReview {
+    font-size: 14px;
+  }
+}

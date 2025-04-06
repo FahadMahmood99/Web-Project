@@ -1,0 +1,163 @@
+.onboardingBody {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #fff9f6;
+  padding: 50px 0;
+}
+
+.onboardingImg {
+  max-width: 70%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.onboardingBtn {
+  background-color: #bb1314;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.genreBody {
+  min-height: 100vh;
+  background-color: #fff9f6;
+  padding: 40px 20px;
+}
+
+.btnTop {
+  background: none;
+  border: none;
+  color: #bb1314;
+  font-size: 16px;
+}
+
+.stepperImg {
+  width: 90%;
+  height: auto;
+  max-width: 600px;
+}
+
+.mobileDropDown {
+  border: 1px solid #bb1314;
+  border-radius: 5px;
+  padding: 10px;
+  color: #bb1314;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobileSelectedItems {
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #bb1314;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.mobileItems {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #bb1314;
+  background-color: #fff9f6;
+  outline-color: #bb1314;
+  outline-style: solid;
+  outline-width: 1px;
+  margin: 4px 2p;
+}
+
+.desktopGenreBody {
+  position: relative;
+  margin: 5px;
+  flex: 1 1 22%;
+  max-width: 22%;
+}
+
+.desktopItems {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+  width: 100%;
+}
+
+.desktopSelectedItems {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.error {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footerMsg {
+  background-color: #bb1314;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.insightSelection {
+  min-height: 60px;
+  padding: 10px 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.insightImg {
+  width: "24px";
+  height: "24px";
+}
+
+.insightText {
+  white-space: normal;
+  font-size: 16px;
+  text-align: left;
+}
+
+.selectedGoal {
+  font-size: 16px;
+  min-height: 50px;
+  text-align: left;
+}
+
+.analyzeBody {
+  min-height: 100vh;
+  background-color: #fdf8f5;
+  padding: 40px 20px;
+}
+
+.progressText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.progressBtn {
+  font-size: 16px;
+  min-width: 150px;
+  color: #fff;
+  border: none;
+}

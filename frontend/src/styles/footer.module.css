@@ -1,0 +1,19 @@
+
+.footerSection {
+  background: linear-gradient(to right, #bb1314, #ed553b);
+  opacity: 0.75;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 48px 50px;
+}
+
+.flickerIcon {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.footerLine {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  padding-top: 20px;
+}

@@ -1,0 +1,41 @@
+.wrapperDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  background-color: #fff8f5;
+  padding: 15px;
+  padding-left: 85px;
+  padding-right: 85px;
+}
+
+@media (max-width: 1165px) {
+  .wrapperDiv {
+    font-size: 1em;
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media (max-width: 1076px) {
+  .wrapperDiv {
+    font-size: 0.95em;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+
+@media (max-width: 991px) {
+  .wrapperDiv {
+    font-size: 0.95em;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapperDiv {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    text-align: left !important;
+  }
+}
