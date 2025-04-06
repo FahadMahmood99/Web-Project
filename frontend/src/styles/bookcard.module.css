@@ -1,0 +1,215 @@
+.bookCard {
+  flex: 0 0 auto;
+  min-width: 180px;
+  max-width: 200px;
+  background-color: #fff3e6;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bookCard:hover {
+  transform: translateY(-5px);
+}
+
+.cardDiv {
+  height: 12rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImg {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  min-height: 80px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  color: #333;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.cardSubTitle {
+  font-size: 12px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.cardText {
+  font-size: 10px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.bookFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Time Section */
+.bookTime {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Keeps clock and time close */
+  font-size: 12px;
+}
+
+.bookRating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rating {
+  background-color: #ffc107; /* Same yellow color as Bootstrap badge */
+  color: #333;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.bookRating p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* Ensure icons align properly */
+.icon {
+  font-size: 14px;
+}
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .bookCard {
+    min-width: 160px;
+    max-width: 180px;
+  }
+
+  .cardTitle {
+    font-size: 13px;
+  }
+
+  .cardSubTitle {
+    font-size: 11px;
+  }
+
+  .cardText {
+    font-size: 9px;
+  }
+
+  .bookFooter {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .bookTime,
+  .bookRating {
+    font-size: 11px;
+  }
+}
+
+/* Small Tablets & Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+  .bookCard {
+    min-width: 150px;
+    max-width: 170px;
+  }
+
+  .cardTitle {
+    font-size: 12px;
+  }
+
+  .cardSubTitle {
+    font-size: 10px;
+  }
+
+  .cardText {
+    font-size: 9px;
+  }
+
+  .bookFooter {
+    flex-wrap: wrap; /* Allows wrapping if needed */
+    gap: 5px;
+  }
+
+  .bookTime,
+  .bookRating {
+    font-size: 10px;
+  }
+}
+
+/* Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .bookCard {
+    min-width: 130px;
+    max-width: 150px;
+    padding: 5px;
+  }
+
+  .cardDiv {
+    height: 10rem;
+  }
+
+  .cardBody {
+    min-height: 70px;
+  }
+
+  .cardTitle {
+    font-size: 11px;
+  }
+
+  .cardSubTitle {
+    font-size: 9px;
+  }
+
+  .cardText {
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+  .bookFooter {
+    gap: 5px;
+  }
+
+  .bookTime,
+  .bookRating {
+    font-size: 9px;
+  }
+
+  .bookRating p {
+    font-size: 8px;
+  }
+  .rating {
+    font-size: 10px;
+  }
+}

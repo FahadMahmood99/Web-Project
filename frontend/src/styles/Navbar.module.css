@@ -1,0 +1,92 @@
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fafafa; 
+  color: #333;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hamburger Menu (Only Visible on Small Screens) */
+.menuToggle {
+  font-size: 24px;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  padding: 10px;
+  margin-bottom: 3px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  width: 350px;
+  border: 1px solid #ddd; 
+  overflow: hidden;
+  margin: 0 50px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.iconImage {
+  width: 18px;
+  height: 18px;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.searchButton {
+  background: #b03030;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.searchButton:hover {
+  background: #901c1c;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .searchContainer {
+    width: 70%; 
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar {
+    justify-content: flex-end; 
+  }
+}

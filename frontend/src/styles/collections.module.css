@@ -1,0 +1,200 @@
+/* Container */
+.container {
+  position: relative;
+  padding: 20px 40px;
+  max-width: 100%;
+  overflow: hidden;
+  height: fit-content;
+}
+
+/* Header */
+.header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.recommended {
+  font-weight: bold;
+  color: red;
+}
+
+.forYou {
+  font-style: italic;
+  color: #333;
+}
+
+/* Scrollable Wrapper */
+.collectionsWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start; /* Align cards properly */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  padding: 10px 0;
+  gap: 20px;
+  white-space: normal; /* Allows text to wrap */
+}
+
+.collectionsWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card Styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid #eee;
+  width: 230px; /* Default size */
+  flex: 0 0 auto;
+  word-wrap: break-word; /* Ensure text breaks onto the next line */
+  white-space: normal; /* Allows text wrapping */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image */
+.cardImage {
+  width: 100%;
+  height: 160px;
+  object-fit:contain;
+  margin-bottom: 10px;
+}
+
+/* Card Content */
+.cardContent {
+  padding: 10px 0;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.cardCategory {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.cardDescription {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #444;
+  line-height: 1.4;
+  word-break: break-word; /* Ensures text wraps properly */
+}
+
+/* Navigation Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  z-index: 10;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+}
+
+/* Move buttons outward */
+.navButton:first-of-type {
+  left: -5px;
+}
+
+.navButton:last-of-type {
+  right: -5px;
+}
+
+.navButton:hover {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+  .card {
+    width: 200px;
+    padding: 12px;
+  }
+
+  .cardImage {
+    height: 140px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .card {
+    width: 180px;
+    padding: 10px;
+  }
+
+  .cardImage {
+    height: 120px;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .cardDescription {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .collectionsWrapper {
+    gap: 10px;
+  }
+
+  .card {
+    width: 150px;
+    padding: 8px;
+  }
+
+  .cardImage {
+    height: 100px;
+  }
+
+  .cardTitle {
+    font-size: 0.9rem;
+  }
+
+  .cardDescription {
+    font-size: 0.7rem;
+  }
+
+  .navButton {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}

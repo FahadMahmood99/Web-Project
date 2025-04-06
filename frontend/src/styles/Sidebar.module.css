@@ -1,0 +1,118 @@
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  background-color: #f7f7f7; /* Softer gray */
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+/* Show Sidebar when isOpen is true */
+.show {
+  left: 0;
+}
+
+/* Sidebar Overlay (Closes when clicked outside) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1049;
+}
+
+/* Show overlay when sidebar is open */
+.showOverlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.appLogo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.menu li .icon {
+  width: 30px;
+  text-align: center;
+}
+
+.menu li.active {
+  background-color: #b03030;
+  color: white;
+  font-weight: bold;
+}
+
+.menu li.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #bb1314;
+  border-radius: 3px;
+}
+
+.menu li:hover {
+  background-color: rgba(176, 48, 48, 0.2);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px;
+  }
+
+  .show {
+    left: 0;
+  }
+}
+
+.closeBtn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .closeBtn {
+    display: block;
+  }
+}
