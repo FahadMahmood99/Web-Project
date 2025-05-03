@@ -1,14 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/form.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleBtn from "../components/GoogleBtn";
-import { handleGoogleSuccess } from "../utils/GoogleApi.jsx";
-import handleLogin from "../network/IsOnboarded.js";
-import UserContext from "../context/UserContext.jsx";
+import axios from "axios";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -20,20 +16,24 @@ const LoginForm = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [dbError, setdbError] = useState(null);
   const navigate = useNavigate();
-  const { setUser, updateToken, setToken } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      await handleLogin(
-        email,
-        password,
-        navigate,
-        setErrorMessages,
-        updateToken,
-        setUser,
-        errorMessages
-      );
+      try {
+        const res = await axios.post("http://localhost:5000/api/auth/login", {
+          email,
+          password,
+        });
+
+        console.log("RES LOG", res);
+
+        navigate("/home");
+      } catch (error) {
+        const msg =
+          error.response?.data?.error || "Login failed. Please try again.";
+        setErrorMessages({ ...errorMessages, email: msg });
+      }
     }
   };
 
@@ -176,28 +176,6 @@ const LoginForm = () => {
             >
               Login
             </button>
-
-            {/* Divider */}
-            <span className={`${styles.textLine} my-3`}>OR</span>
-
-            {/* Login with Google */}
-            <GoogleOAuthProvider clientId="233951012392-us7v2olibnnnt50g5qo9qjki4att4sk5.apps.googleusercontent.com">
-              <GoogleBtn
-                buttonText="Login with Google"
-                onSuccess={(tokenResponse) =>
-                  handleGoogleSuccess(
-                    tokenResponse,
-                    navigate,
-                    setdbError,
-                    setToken,
-                    setUser
-                  )
-                }
-                onError={() =>
-                  setdbError("Google login failed. Please try again.")
-                }
-              />
-            </GoogleOAuthProvider>
           </div>
         </form>
 

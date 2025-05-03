@@ -1,25 +1,17 @@
-import React, { useMemo, useState, useContext } from "react";
+import React, { useMemo, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "react-phone-input-2/lib/style.css";
 import styles from "../styles/form.module.css";
-// import "../styles/signup.modules.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import signup from "../network/signup";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import GoogleBtn from "../components/GoogleBtn";
-import { handleGoogleSuccess } from "../utils/GoogleApi.jsx";
-import UserContext from "../context/UserContext.jsx";
-import api from "../network/api.js";
+import axios from "axios";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -33,14 +25,11 @@ const SignupForm = () => {
   const options = useMemo(() => countryList().getData(), []);
   const navigate = useNavigate();
   const [dbError, setdbError] = useState(null);
-  const { setUser, updateToken, setToken } = useContext(UserContext);
-
   const validateForm = () => {
     const newErrors = {};
 
     // Validation rules
-    if (!formData.first_name) newErrors.first_name = "First Name is required.";
-    if (!formData.last_name) newErrors.last_name = "Last Name is required.";
+    if (!formData.name) newErrors.name = "Name is required.";
     if (!formData.phone_number)
       newErrors.phone_number = "Phone number is required.";
     if (!formData.country) newErrors.country = "Country is required.";
@@ -71,36 +60,27 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
-    if (validateForm()) {
-      // Proceed with signup logic
-      try {
-        console.log("Form submitted successfully:", formData);
-        const data = await signup(
-          formData.first_name,
-          formData.last_name,
-          formData.email,
-          formData.password,
-          formData.country.value,
-          formData.phone_number
-        );
-        console.log("SIGNUP DATA ", data);
-        const response = await api.post("/auth/verifyEmailView", {
+    try {
+      console.log("Submitting:", formData);
+
+      const registerResponse = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        {
+          name: formData.name,
           email: formData.email,
-        });
-        console.log("RESPONSE FROM SIGN ", response);
-        navigate("/otp", {
-          state: {
-            email: formData.email,
-            fromSignup: true,
-            password: formData.password,
-          },
-        });
-      } catch (err) {
-        // Handle error as needed
-        console.error(err);
-        setdbError(err || "Login failed");
-      }
+          password: formData.password,
+          country: formData.country.value,
+          phone_number: formData.phone_number,
+        }
+      );
+
+      console.log("REGISTER RESPONSE", registerResponse.data);
+      navigate("/login");
+    } catch (err) {
+      console.error("Signup error:", err);
+      setdbError(err?.response?.data?.message || "Signup failed");
     }
   };
 
@@ -124,36 +104,18 @@ const SignupForm = () => {
         <form className={`${styles.SignupUserForm}`} onSubmit={handleSubmit}>
           <div className={`${styles.inputGroup}`}>
             <fieldset className={`${styles.fieldsetStyle}`}>
-              <legend className={`${styles.legendStyle}`}>First Name:</legend>
+              <legend className={`${styles.legendStyle}`}>Name:</legend>
               <input
                 type="text"
-                id="first_name"
+                id="name"
                 autoComplete="off"
-                placeholder="Enter your first name"
+                placeholder="Enter your name"
                 className={`${styles.formControl} ${styles.inputStyle}`}
-                value={formData.first_name}
+                value={formData.name}
                 onChange={handleInputChange}
               />
             </fieldset>
-            {errors.first_name && (
-              <p className={`${styles.error}`}>{errors.first_name}</p>
-            )}
-
-            <fieldset className={`${styles.fieldsetStyle}`}>
-              <legend className={`${styles.legendStyle}`}>Last Name:</legend>
-              <input
-                type="text"
-                id="last_name"
-                autoComplete="off"
-                placeholder="Enter your last name"
-                className={`${styles.formControl} ${styles.inputStyle}`}
-                value={formData.last_name}
-                onChange={handleInputChange}
-              />
-            </fieldset>
-            {errors.last_name && (
-              <p className={`${styles.error}`}>{errors.last_name}</p>
-            )}
+            {errors.name && <p className={`${styles.error}`}>{errors.name}</p>}
 
             <fieldset className={`${styles.fieldsetStyle}`}>
               <legend className={`${styles.legendStyle}`}>Phone number:</legend>
@@ -331,24 +293,6 @@ const SignupForm = () => {
             >
               Sign Up
             </button>
-            <span className={`${styles.textLine} my-3`}>OR</span>
-            <GoogleOAuthProvider clientId="233951012392-us7v2olibnnnt50g5qo9qjki4att4sk5.apps.googleusercontent.com">
-              <GoogleBtn
-                buttonText="Signup with Google"
-                onSuccess={(tokenResponse) =>
-                  handleGoogleSuccess(
-                    tokenResponse,
-                    navigate,
-                    setdbError,
-                    setToken,
-                    setUser
-                  )
-                }
-                onError={() =>
-                  setdbError("Google login failed. Please try again.")
-                }
-              />
-            </GoogleOAuthProvider>
           </div>
         </form>
         <div className={`${styles.login} mt-3`}>
