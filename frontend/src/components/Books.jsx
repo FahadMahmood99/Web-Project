@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "../styles/books.module.css";
 import BookCard from "./BookCard";
-import api from "../network/api";
 import Loader from "./Loader";
+import axios from "axios";
 
 function Books({ url, description, headings, pageId }) {
   const [booksData, setBooksData] = useState([]);
@@ -12,7 +12,7 @@ function Books({ url, description, headings, pageId }) {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await api.get(url);
+        const res = await axios.get(url);
         const data = res.data;
         console.log("book get :: ", data);
         if (pageId === "home" || pageId === "bookdetail") {
@@ -21,6 +21,7 @@ function Books({ url, description, headings, pageId }) {
         } else if (pageId === "favorites") {
           // For favorite page, extract the book data from each favorite object
           const favoriteBooks = data.map((fav) => fav.book);
+          console.log("FAv books ", favoriteBooks)
           setBooksData(favoriteBooks);
         }
       } catch (error) {

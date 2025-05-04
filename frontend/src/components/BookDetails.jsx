@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/bookdetails.module.css";
 import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
 import { FaHeart, FaShareAlt } from "react-icons/fa";
-import api from "../network/api";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "./Loader";
 import axios from "axios";
@@ -15,13 +14,13 @@ const BookDetails = () => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFavoriteClick = async () => {
-    setIsFavorite((prev) => !prev);
     try {
-      const res = await api.post("/interactions/favorites/", { book: id });
-      setIsFavorite(res.data.is_favorite);
+      const res = await axios.patch(
+        `http://localhost:5000/api/books/${id}/favorite`
+      );
+      setIsFavorite(res.data.book.favorites === 1);
     } catch (error) {
       console.error("Error toggling favorite:", error);
-      setIsFavorite((prev) => !prev);
     }
   };
 
@@ -32,10 +31,7 @@ const BookDetails = () => {
           `http://localhost:5000/api/books/${id}`
         );
         setBook(bookRes.data);
-
-        // const favRes = await api.get(`/interactions/favorites/`);
-        // const isFav = favRes.data.some((fav) => fav.book?.id === parseInt(id));
-        // setIsFavorite(isFav);
+        setIsFavorite(bookRes.data.favorites === 1); // Set initial favorite state
       } catch (error) {
         console.error("Error fetching book details:", error);
       } finally {

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/botdcard.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BotdCard = () => {
   const [book, setBook] = useState(null);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/bookdetails/${book.id}`);
+  };
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -23,7 +29,7 @@ const BotdCard = () => {
   if (!book) return <p>Loading Book of the Day...</p>;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleCardClick}>
       <div className={styles.header}>
         <h2>
           <span className={styles.recommended}>Book</span>{" "}
@@ -53,7 +59,9 @@ const BotdCard = () => {
           {/* Time & Rating */}
           <div className={styles.info}>
             <span>⏳ {book.time || "N/A"}</span>
-            <span>⭐ {book.rating || "N/A"} ({book.reviews || 0})</span>
+            <span>
+              ⭐ {book.rating || "N/A"} ({book.reviews || 0})
+            </span>
           </div>
 
           {/* Book Tags */}

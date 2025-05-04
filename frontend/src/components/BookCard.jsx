@@ -3,11 +3,17 @@ import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import { FaClock } from "react-icons/fa";
 import styles from "../styles/bookcard.module.css";
+import { useNavigate } from "react-router-dom";
 
 function BookCard({ book }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/bookdetails/${book.id}`);
+  };
   // console.log("BOokkk", book);
   return (
-    <Card className={styles.bookCard}>
+    <Card className={styles.bookCard} onClick={handleCardClick}>
       <div className={styles.cardDiv}>
         <Card.Img
           src={book.imgSrc || book.cover_image_url}

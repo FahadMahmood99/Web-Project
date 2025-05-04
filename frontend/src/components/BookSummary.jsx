@@ -7,19 +7,27 @@ const BookSummary = () => {
   const navigate = useNavigate();
   const summaryData = location.state?.summaryData;
   const id = location.state?.id;
+  const aiData = location.state?.aiData;
 
   if (!summaryData) {
     return <div>No summary data available. Please go back and try again.</div>;
   }
 
   // Destructure the data and create the sections array from the summary fields
-  const { cover_image_url, summary_section_1, summary_section_2, summary_section_3, summary_section_4, summary_section_5 } = summaryData;
+  const {
+    cover_image_url,
+    summary_section_1,
+    summary_section_2,
+    summary_section_3,
+    summary_section_4,
+    summary_section_5,
+  } = summaryData;
   const sections = [
-    { title: "Section 1:", section: summary_section_1 },
-    { title: "Section 2:", section: summary_section_2 },
-    { title: "Section 3:", section: summary_section_3 },
-    { title: "Section 4:", section: summary_section_4 },
-    { title: "Section 5: ", section: summary_section_5 }
+    { title: "Section 1:", section: summary_section_1 || aiData.section1 },
+    { title: "Section 2:", section: summary_section_2 || aiData.section2 },
+    { title: "Section 3:", section: summary_section_3 || aiData.section3 },
+    { title: "Section 4:", section: summary_section_4 || aiData.section4 },
+    { title: "Section 5: ", section: summary_section_5 || aiData.section5 },
   ];
 
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
@@ -42,16 +50,19 @@ const BookSummary = () => {
 
       {/* Book Cover Section */}
       <div className={styles.bookCoverSection}>
-        <img src={cover_image_url} alt="Book Cover" className={styles.bookCover} />
+        <img
+          src={cover_image_url}
+          alt="Image not available"
+          className={styles.bookCover}
+        />
       </div>
 
       {/* Book Title & Icons */}
       <div className={styles.bookHeader}>
-        <h1 className={styles.bookTitle}>{summaryData.title || "Book Summary"}</h1>
-        <div className={styles.icons}>
-          <span className={styles.icon}>❤️</span>
-          <span className={styles.icon}>🔗</span>
-        </div>
+        <h1 className={styles.bookTitle}>
+          {summaryData.title || "Book Summary"}
+        </h1>
+
       </div>
 
       {/* Summary Section */}
@@ -84,9 +95,6 @@ const BookSummary = () => {
           </button>
         </div>
       </div>
-
-      {/* Mark as Done Button */}
-      <button className={styles.doneButton}>Mark as Done</button>
     </div>
   );
 };

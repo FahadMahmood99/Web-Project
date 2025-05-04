@@ -48,7 +48,7 @@ function App() {
         <Route path="/bookdetails/:id" element={<BookDetails />} />
         <Route path="/booksummary" element={<BookSummaryPage />} />
         <Route path="/aisearch" element={<AIsearchPage />} />
-        <Route path="/favorite" element={<FavouritesPage />} />
+        <Route path="/favourites" element={<FavouritesPage />} />
       </Routes>
     </div>
   );
