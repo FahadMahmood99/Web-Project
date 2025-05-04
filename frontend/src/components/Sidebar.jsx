@@ -27,12 +27,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </Link>
           </li>
           <li>
-            <Link to="/library" onClick={toggleSidebar}>
-              <span className={styles.icon}>📚</span>
-              <span>Library</span>
-            </Link>
-          </li>
-          <li>
             <Link to="/aisearch" onClick={toggleSidebar}>
               <span className={styles.icon}>🎧</span>
               <span>AI Search</span>
@@ -42,12 +36,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <Link to="/favourites" onClick={toggleSidebar}>
               <span className={styles.icon}>❤️</span>
               <span>Favourites</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/history" onClick={toggleSidebar}>
-              <span className={styles.icon}>🕓</span>
-              <span>History</span>
             </Link>
           </li>
           <li>

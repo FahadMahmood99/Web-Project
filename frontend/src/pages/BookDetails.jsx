@@ -11,9 +11,10 @@ function BookDetails() {
     <Navbar/>
     <BookOverview/>
     <Books
-            url="sample"
+            url="http://localhost:5000/api/books/"
             description="Lorem ipsum dolor sit amet consectetur."
             headings={["Similar", "Books"]}
+            pageId={"home"}
           />
     <Reviews/>
     <NewFooter/>

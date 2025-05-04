@@ -45,6 +45,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/bookdetails/:id" element={<BookDetails />} />
+        <Route path="/booksummary" element={<BookSummaryPage />} />
+        <Route path="/aisearch" element={<AIsearchPage />} />
+        <Route path="/favorite" element={<FavouritesPage />} />
       </Routes>
     </div>
   );

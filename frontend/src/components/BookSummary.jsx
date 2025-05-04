@@ -1,70 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/booksummary.module.css";
-import bookCover from "../assets/deepwork.png"; // Replace with actual image
-
-// Dummy Data for Summary Sections
-const summarySections = [
-  {
-    sectionNumber: 1,
-    title: "INTRODUCTION",
-    content:
-      "Lorem ipsum dolor sit amet consectetur. Semper quis venenatis leo sagittis fusce semper...",
-  },
-  {
-    sectionNumber: 2,
-    title: "POWER OF THOUGHTS",
-    content:
-      "Metus sit aliquet aliquam nunc mi. Et est malesuada ut dolor et vel sit...",
-  },
-  {
-    sectionNumber: 3,
-    title: "SELF-HEALING",
-    content:
-      "Porta ante aliquam mauris neque nibh risus morbi volutpat arcu...",
-  },
-  {
-    sectionNumber: 4,
-    title: "FORGIVENESS & GROWTH",
-    content:
-      "Aliquet sit amet arcu tellus in risus venenatis at sodales at...",
-  },
-];
+import { useLocation, useNavigate } from "react-router-dom";
 
 const BookSummary = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const summaryData = location.state?.summaryData;
+  const id = location.state?.id;
+
+  if (!summaryData) {
+    return <div>No summary data available. Please go back and try again.</div>;
+  }
+
+  // Destructure the data and create the sections array from the summary fields
+  const { cover_image_url, summary_section_1, summary_section_2, summary_section_3, summary_section_4, summary_section_5 } = summaryData;
+  const sections = [
+    { title: "Section 1:", section: summary_section_1 },
+    { title: "Section 2:", section: summary_section_2 },
+    { title: "Section 3:", section: summary_section_3 },
+    { title: "Section 4:", section: summary_section_4 },
+    { title: "Section 5: ", section: summary_section_5 }
+  ];
+
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const currentSection = sections[currentSectionIndex];
+
+  const handlePrev = () => {
+    setCurrentSectionIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleNext = () => {
+    setCurrentSectionIndex((prev) => Math.min(prev + 1, sections.length - 1));
+  };
+
   return (
     <div className={styles.container}>
       {/* Back Button */}
-      <button className={styles.backButton}> &larr; Back </button>
+      <button className={styles.backButton} onClick={() => navigate(-1)}>
+        &larr; Back
+      </button>
 
       {/* Book Cover Section */}
       <div className={styles.bookCoverSection}>
-        <img src={bookCover} alt="Book Cover" className={styles.bookCover} />
+        <img src={cover_image_url} alt="Book Cover" className={styles.bookCover} />
       </div>
 
       {/* Book Title & Icons */}
       <div className={styles.bookHeader}>
-        <h1 className={styles.bookTitle}>You Can Heal Your Life</h1>
+        <h1 className={styles.bookTitle}>{summaryData.title || "Book Summary"}</h1>
         <div className={styles.icons}>
-          <span className={styles.icon}>❤️</span> {/* Like Icon */}
-          <span className={styles.icon}>🔗</span> {/* Share Icon */}
+          <span className={styles.icon}>❤️</span>
+          <span className={styles.icon}>🔗</span>
         </div>
       </div>
 
-      {/* Summary Sections */}
+      {/* Summary Section */}
       <div className={styles.summaryContainer}>
-        {summarySections.map((section, index) => (
-          <div key={index} className={styles.summarySection}>
-            <h3>
-              {index + 1}/{summarySections.length} –{" "}
-              <span className={styles.sectionTitle}>
-                SECTION {section.sectionNumber}: {section.title}
-              </span>
-            </h3>
-            <div className={styles.summaryBox}>
-              <p>{section.content}</p>
-            </div>
+        <div className={styles.summarySection}>
+          <h3>
+            {currentSectionIndex + 1}/{sections.length} –{" "}
+            <span className={styles.sectionTitle}>{currentSection.title}</span>
+          </h3>
+          <div className={styles.summaryBox}>
+            <p>{currentSection.section}</p>
           </div>
-        ))}
+        </div>
+
+        {/* Pagination Controls */}
+        <div className={styles.paginationControls}>
+          <button
+            onClick={handlePrev}
+            disabled={currentSectionIndex === 0}
+            className={styles.paginationButton}
+          >
+            ← Previous
+          </button>
+          <button
+            onClick={handleNext}
+            disabled={currentSectionIndex === sections.length - 1}
+            className={styles.paginationButton}
+          >
+            Next →
+          </button>
+        </div>
       </div>
 
       {/* Mark as Done Button */}

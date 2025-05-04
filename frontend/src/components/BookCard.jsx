@@ -5,7 +5,7 @@ import { FaClock } from "react-icons/fa";
 import styles from "../styles/bookcard.module.css";
 
 function BookCard({ book }) {
-  console.log("BOokkk", book);
+  // console.log("BOokkk", book);
   return (
     <Card className={styles.bookCard}>
       <div className={styles.cardDiv}>
