@@ -42,13 +42,14 @@ function HomePage() {
 
         {/* Main Content Area */}
         <div className={styles.content}>
-          <Books
-            url="sample"
+        <Books
+            // url="sample"
+            url="http://localhost:5000/api/books/"
             description="Lorem ipsum dolor sit amet consectetur."
             headings={["Recommended", "For You"]}
+            pageId={"home"}
           />
           <BotdCard />
-          <Collections />
           <BooksForYou />
           <NewFooter />
         </div>

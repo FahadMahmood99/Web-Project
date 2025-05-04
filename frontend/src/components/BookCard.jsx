@@ -5,11 +5,12 @@ import { FaClock } from "react-icons/fa";
 import styles from "../styles/bookcard.module.css";
 
 function BookCard({ book }) {
+  console.log("BOokkk", book);
   return (
     <Card className={styles.bookCard}>
       <div className={styles.cardDiv}>
         <Card.Img
-          src={book.imgSrc}
+          src={book.imgSrc || book.cover_image_url}
           alt={book.title}
           className={styles.cardImg}
         />

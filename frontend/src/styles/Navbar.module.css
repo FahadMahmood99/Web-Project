@@ -1,49 +1,35 @@
-
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #fafafa; 
+  background-color: #fafafa;
   color: #333;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure navbar can anchor absolutely positioned elements inside */
+  z-index: 100;
 }
 
 /* Hamburger Menu (Only Visible on Small Screens) */
 .menuToggle {
   font-size: 24px;
   cursor: pointer;
-  display: none; /* Hidden by default */
+  display: none;
   padding: 10px;
   margin-bottom: 3px;
 }
 
 .searchContainer {
+  position: relative; /* Key for dropdown placement */
   display: flex;
   align-items: center;
   background: white;
   border-radius: 20px;
   width: 350px;
-  border: 1px solid #ddd; 
-  overflow: hidden;
+  border: 1px solid #ddd;
+  overflow: visible; /* Important: allow dropdown to overflow */
   margin: 0 50px;
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.iconImage {
-  width: 18px;
-  height: 18px;
-}
-
-.menuIcon {
-  width: 24px;
-  height: 24px;
+  z-index: 1001; /* Ensure it's on top of everything */
 }
 
 .searchInput {
@@ -71,6 +57,52 @@
   background: #901c1c;
 }
 
+.searchDropdown {
+  position: absolute;
+  top: calc(100% + 4px); /* Slight space between input and dropdown */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1002; /* High enough to appear above all content */
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdownItem {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.iconImage {
+  width: 18px;
+  height: 18px;
+}
+
+.menuIcon {
+  width: 24px;
+  height: 24px;
+}
+
 @media (max-width: 768px) {
   .navbar {
     justify-content: space-between;
@@ -81,12 +113,12 @@
   }
 
   .searchContainer {
-    width: 70%; 
+    width: 70%;
   }
 }
 
 @media (min-width: 769px) {
   .navbar {
-    justify-content: flex-end; 
+    justify-content: flex-end;
   }
 }

@@ -28,7 +28,12 @@ const LoginForm = () => {
 
         console.log("RES LOG", res);
 
-        navigate("/home");
+        const token = res.data.token; // Make sure your backend returns { token: "..." }
+
+        if (token) {
+          localStorage.setItem("token", token);
+          navigate("/home");
+        }
       } catch (error) {
         const msg =
           error.response?.data?.error || "Login failed. Please try again.";
