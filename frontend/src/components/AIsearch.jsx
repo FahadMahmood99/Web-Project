@@ -66,7 +66,6 @@ const AISearch = () => {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Enter book title and author, e.g. Atomic Habits; James Clear"
             />
-            <FaMicrophone className={styles.micIcon} />
             <Button variant="danger" onClick={handleSubmit}>
               <FaPaperPlane />
             </Button>

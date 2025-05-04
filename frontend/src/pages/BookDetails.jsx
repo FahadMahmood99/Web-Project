@@ -12,7 +12,7 @@ function BookDetails() {
     <BookOverview/>
     <Books
             url="http://localhost:5000/api/books/"
-            description="Lorem ipsum dolor sit amet consectetur."
+            description="Explore similar books"
             headings={["Similar", "Books"]}
             pageId={"home"}
           />

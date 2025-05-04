@@ -47,13 +47,6 @@
     border-radius: 6px;
   }
   
-  .micIcon {
-    position: absolute;
-    right: 60px;
-    font-size: 18px;
-    color: gray;
-    cursor: pointer;
-  }
   
   /* AI Suggests */
   .aiSuggests {

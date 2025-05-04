@@ -92,8 +92,6 @@ const BookDetails = () => {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item>English</Dropdown.Item>
-                    <Dropdown.Item>Spanish</Dropdown.Item>
-                    <Dropdown.Item>French</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
@@ -121,13 +119,6 @@ const BookDetails = () => {
                     onClick={() => handleSummaryFetch("read")}
                   >
                     Read
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    className={styles.readButton}
-                    onClick={() => handleSummaryFetch("audio")}
-                  >
-                    Audio
                   </Button>
                 </div>
                 <div className="d-flex gap-1">
@@ -181,9 +172,6 @@ const BookDetails = () => {
                 >
                   {book.summary_section_1 || "No introduction available."}
                 </p>
-                <Button variant="danger" className={styles.buyButton}>
-                  🛒 Buy on Amazon
-                </Button>
               </Col>
             </Row>
           </div>

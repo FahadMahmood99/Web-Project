@@ -14,15 +14,13 @@ function Books({ url, description, headings, pageId }) {
       try {
         const res = await axios.get(url);
         const data = res.data;
-        console.log("book get :: ", data);
+        console.log("API response:", data);
+  
         if (pageId === "home" || pageId === "bookdetail") {
-          // In these pages, you are directly using the book data
           setBooksData(data);
         } else if (pageId === "favorites") {
-          // For favorite page, extract the book data from each favorite object
-          const favoriteBooks = data.map((fav) => fav.book);
-          console.log("FAv books ", favoriteBooks)
-          setBooksData(favoriteBooks);
+          // No need to extract `book`—data is already the books array
+          setBooksData(data);
         }
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -30,10 +28,9 @@ function Books({ url, description, headings, pageId }) {
         setLoading(false);
       }
     };
-
     fetchBooks();
-  }, [url, pageId]); // Re-fetch when the url or pageId changes
-
+  }, [url, pageId]);
+  
   const scrollLeft = () => {
     scrollContainerRef.current.scrollBy({ left: -250, behavior: "smooth" });
   };
@@ -59,24 +56,23 @@ function Books({ url, description, headings, pageId }) {
       <div className={styles.booksWrapper} ref={scrollContainerRef}>
         {loading ? (
           <Loader />
-        ) : (
-          booksData.map((book, index) => {
-            return (
+        ) : booksData.length > 0 ? (
+          booksData
+            .filter((book) => book?._id) // Ensure book has an `_id`
+            .map((book) => (
               <BookCard
-                key={index}
+                key={book._id} // Use `_id` instead of index
                 book={{
                   id: book._id,
                   title: book.title,
                   author: book.author,
-                  description: book.description || "No description available", // Ensure a default description
+                  description: book.description || "No description available",
                   imgSrc: book.cover_image_url,
-                  time: book.time || "N/A", // Placeholder for time
-                  rating: book.rating || "N/A", // Placeholder for rating
-                  reviews: book.reviews || 0, // Placeholder for reviews count
                 }}
               />
-            );
-          })
+            ))
+        ) : (
+          <p>No books found.</p>
         )}
       </div>
 

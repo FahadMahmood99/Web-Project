@@ -45,7 +45,7 @@ function HomePage() {
         <Books
             // url="sample"
             url="http://localhost:5000/api/books/"
-            description="Lorem ipsum dolor sit amet consectetur."
+            description="The best books for you to read."
             headings={["Recommended", "For You"]}
             pageId={"home"}
           />
